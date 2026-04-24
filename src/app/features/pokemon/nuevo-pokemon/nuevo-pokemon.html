@@ -1,0 +1,82 @@
+<div class="formulario">
+
+  <!-- Cabecera del formulario -->
+  <header class="form-header">
+    <h2>✨ Nuevo Pokémon</h2>
+    <button type="button" class="btn-cerrar" (click)="cancelar()">✕</button>
+  </header>
+
+  <!-- Cuerpo del formulario -->
+  <div class="form-body">
+
+    <!-- Mensaje de error si la validación falla -->
+    <div class="alerta" *ngIf="error">
+      {{ error }}
+    </div>
+
+    <!-- Nombre -->
+    <div class="campo">
+      <label for="nombre">Nombre del Pokémon</label>
+      <input
+        id="nombre"
+        type="text"
+        [(ngModel)]="nuevo.nombre"
+        name="nombre"
+        placeholder="Ej: Pikachu, Charmander...">
+    </div>
+
+    <!-- Tipo -->
+    <div class="campo">
+      <label for="tipo">Tipo</label>
+      <select id="tipo" [(ngModel)]="nuevo.tipo" name="tipo">
+        <option value="">-- Selecciona un tipo --</option>
+        <option value="Fuego">Fuego</option>
+        <option value="Agua">Agua</option>
+        <option value="Planta">Planta</option>
+        <option value="Eléctrico">Eléctrico</option>
+        <option value="Hada">Hada</option>
+        <option value="Hielo">Hielo</option>
+        <option value="Lucha">Lucha</option>
+        <option value="Psíquico">Psíquico</option>
+      </select>
+    </div>
+
+    <!-- URL imagen -->
+    <div class="campo">
+      <label for="imagen">URL de la imagen</label>
+      <input
+        id="imagen"
+        type="text"
+        [(ngModel)]="nuevo.imagen"
+        name="imagen"
+        placeholder="https://... (opcional)">
+    </div>
+
+    <!-- Stats en 3 columnas -->
+    <div class="stats-grid">
+      <div class="campo">
+        <label for="salud">❤️ Salud máxima</label>
+        <input id="salud" type="number" min="1"
+               [(ngModel)]="nuevo.saludMaxima" name="salud">
+      </div>
+      <div class="campo">
+        <label for="ataque">⚔️ Ataque</label>
+        <input id="ataque" type="number" min="0"
+               [(ngModel)]="nuevo.ataque" name="ataque">
+      </div>
+      <div class="campo">
+        <label for="defensa">🛡️ Defensa</label>
+        <input id="defensa" type="number" min="0"
+               [(ngModel)]="nuevo.defensa" name="defensa">
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Botones -->
+  <footer class="form-footer">
+    <button type="button" class="btn-cancelar" (click)="cancelar()">Cancelar</button>
+    <button type="button" class="btn-guardar" (click)="guardar()">Guardar</button>
+  </footer>
+
+</div>

@@ -1,0 +1,45 @@
+<div class="pokedex">
+
+  <!-- === Cabecera === -->
+  <header class="cabecera">
+    <h1><span class="pokeball">🔴</span> Mini Pokedex</h1>
+    <button class="btn-add" (click)="abrirModal()">
+      ➕ Añadir Pokémon
+    </button>
+  </header>
+
+  <!-- === Lista de Pokémon === -->
+  <section class="lista">
+
+    <!-- Estado vacío: se muestra cuando no hay Pokémon todavía -->
+    <div *ngIf="pokemons.length === 0" class="vacio">
+      <p class="vacio-icono">📭</p>
+      <h2>La Pokedex está vacía</h2>
+      <p>Pulsa <strong>Añadir Pokémon</strong> para empezar tu colección.</p>
+    </div>
+
+    <!-- Grid de tarjetas: una por cada Pokémon -->
+    <div class="grid" *ngIf="pokemons.length > 0">
+      <app-pokemon-items
+        *ngFor="let p of pokemons"
+        [pokemon]="p"
+        (eliminar)="onEliminar($event)">
+      </app-pokemon-items>
+    </div>
+
+  </section>
+
+</div>
+
+<!-- === Modal === -->
+<!-- Solo se muestra cuando mostrarModal === true.
+     El click en el fondo (overlay) cierra el modal. -->
+<div class="modal-overlay" *ngIf="mostrarModal" (click)="cerrarModal()">
+
+  <!-- $event.stopPropagation() evita que al hacer clic dentro del modal
+       se cierre el modal (porque el click se propagaría al overlay). -->
+  <div class="modal-ventana" (click)="$event.stopPropagation()">
+    <app-nuevo-pokemon (cerrar)="cerrarModal()"></app-nuevo-pokemon>
+  </div>
+
+</div>

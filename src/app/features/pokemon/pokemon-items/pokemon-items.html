@@ -1,0 +1,45 @@
+<div class="card">
+
+  <!-- Cabecera con color según el tipo del Pokémon -->
+  <div class="card-header" [style.background]="colorTipo()">
+    <span class="tipo-badge">{{ pokemon.tipo }}</span>
+  </div>
+
+  <!-- Imagen del Pokémon.
+       Si la URL falla al cargar, mostramos un placeholder sustituyendo
+       la imagen rota por una imagen genérica. -->
+  <div class="card-imagen">
+    <img
+      [src]="pokemon.imagen"
+      [alt]="pokemon.nombre"
+      (error)="pokemon.imagen = 'https://placehold.co/200x200/cccccc/white?text=?'">
+  </div>
+
+  <!-- Cuerpo con el nombre y las stats -->
+  <div class="card-body">
+    <h3 class="card-nombre">{{ pokemon.nombre }}</h3>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-label">❤️ Salud</span>
+        <strong>{{ pokemon.saludMaxima }}</strong>
+      </div>
+      <div class="stat">
+        <span class="stat-label">⚔️ Ataque</span>
+        <strong>{{ pokemon.ataque }}</strong>
+      </div>
+      <div class="stat">
+        <span class="stat-label">🛡️ Defensa</span>
+        <strong>{{ pokemon.defensa }}</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer con el botón de eliminar -->
+  <div class="card-footer">
+    <button class="btn-eliminar" (click)="onEliminarClick()">
+      🗑️ Eliminar
+    </button>
+  </div>
+
+</div>

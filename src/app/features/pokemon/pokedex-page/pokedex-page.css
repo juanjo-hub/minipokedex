@@ -1,0 +1,115 @@
+.pokedex {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+/* === Cabecera === */
+.cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #e52521 0%, #b71c1c 100%);
+  color: white;
+  padding: 18px 28px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  margin-bottom: 30px;
+}
+
+.cabecera h1 {
+  margin: 0;
+  font-size: 1.9rem;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.35);
+}
+
+.pokeball {
+  font-size: 1.4rem;
+  margin-right: 6px;
+}
+
+.btn-add {
+  background: #f8b500;
+  color: #222;
+  border: none;
+  padding: 10px 22px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 3px 0 #b58600;
+  transition: transform 0.15s;
+}
+
+.btn-add:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 #b58600;
+}
+
+.btn-add:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 #b58600;
+}
+
+/* === Estado vacío === */
+.vacio {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 50px 30px;
+  text-align: center;
+  border-radius: 14px;
+  color: #555;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.vacio-icono {
+  font-size: 3.5rem;
+  margin: 0 0 10px 0;
+}
+
+.vacio h2 {
+  margin: 0 0 8px 0;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+/* === Grid de tarjetas === */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+/* === Modal === */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  backdrop-filter: blur(3px);
+  animation: fadeIn 0.2s ease;
+}
+
+.modal-ventana {
+  background: white;
+  border-radius: 16px;
+  border: 4px solid #e52521;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  max-width: 520px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideUp 0.25s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
