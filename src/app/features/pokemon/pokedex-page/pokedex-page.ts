@@ -43,10 +43,13 @@ export class PokedexPage implements OnInit {
    * el servicio llame a .next() con una lista nueva, este callback
    * se ejecuta y actualiza this.pokemons → Angular refresca la vista.
    */
-  ngOnInit(): void {
+ngOnInit(): void {
     this.pokemonService.getPokemons().subscribe(lista => {
       this.pokemons = lista;
     });
+
+    // Cargar los Pokémon desde la API Laravel al iniciar la app
+    this.pokemonService.cargarDesdeApi().subscribe();
   }
 
   /** Abre el modal */
